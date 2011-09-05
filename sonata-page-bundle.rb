@@ -10,12 +10,12 @@ namespace :sonata do
         end
 
         desc "Create a snapshots of all pages available."
-        task "create-snapshot", :roles => :db do
+        task "create-snapshot", :roles => :app, :only => { :master => true } do
             run "cd #{latest_release} && #{php_bin} #{symfony_console} sonata:page:create-snapshots --env=#{symfony_env_prod}"
         end
 
         desc "Update core routes, from routing files to page manager."
-        task "update-core-routes", :roles => :db do
+        task "update-core-routes", :roles => :app, :only => { :master => true } do
             run "cd #{latest_release} && #{php_bin} #{symfony_console} sonata:page:update-core-routes --env=#{symfony_env_prod}"
         end
     end
