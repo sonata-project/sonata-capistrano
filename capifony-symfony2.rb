@@ -106,6 +106,18 @@ namespace :deploy do
       run "cd #{latest_release} && #{php_bin} #{symfony_console} doctrine:migrations:migrate --env=#{symfony_env_prod} --no-interaction"
     end
   end
+
+  task :symlink, :except => { :no_release => true } do
+    on_rollback do
+      if previous_release
+        run "rm -f #{current_path}; ln -s #{previous_release}/web #{current_path}; true"
+      else
+        logger.important "no previous release to rollback to, rollback of symlink skipped"
+      end
+    end
+
+    run "rm -f #{current_path} && ln -s #{latest_release}/web #{current_path}"
+  end
 end
 
 namespace :symfony do
