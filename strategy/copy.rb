@@ -59,7 +59,7 @@ module Capistrano
             end
 
             logger.debug "Update external vendors"
-            system(copy_cache + '/bin/vendors install --reinstall')
+            system(copy_cache + '/bin/vendors install')
 
             FileUtils.mkdir_p(destination)
 
