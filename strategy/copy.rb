@@ -38,7 +38,7 @@ module Capistrano
       # :copy_compression, which must be one of :gzip, :bz2, or
       # :zip, and which specifies how the source should be compressed for
       # transmission to each host.
-      class Sumfony2VendorCopy < Copy
+      class Symfony2VendorCopy < Copy
         # Obtains a copy of the source code locally (via the #command method),
         # compresses it to a single file, copies that file to all target
         # servers, and uncompresses it on each of them into the deployment
