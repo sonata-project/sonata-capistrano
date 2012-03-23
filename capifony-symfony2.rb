@@ -159,6 +159,7 @@ namespace :symfony do
     desc "Warms up an empty cache."
     task :warmup, :roles => :app do
       run "cd #{latest_release} && #{php_bin} #{symfony_console} cache:warmup --env=#{symfony_env_prod}"
+      run "cd #{latest_release} && #{php_bin} #{symfony_console} cache:create-cache-class --env=#{symfony_env_prod}"
       run "chmod -R g+w #{latest_release}/#{cache_path}"
     end
   end
