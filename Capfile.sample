@@ -38,7 +38,6 @@ set :shared_children,   [app_path + "/logs", web_path + "/uploads"]
 set :shared_files,      ["app/config/parameters.ini"]
 set :asset_children,    [web_path + "/css", web_path + "/js"]
 
-set :update_vendors,    true
 set :configuration_init, false
 
 # This custom strategy
