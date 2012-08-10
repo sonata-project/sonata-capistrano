@@ -18,9 +18,6 @@ set :cache_path,          app_path + "/cache"
 # Use AsseticBundle
 set :dump_assetic_assets, false
 
-# Whether to run the bin/vendors script to update vendors
-set :update_vendors, false
-
 # Dirs that need to remain the same between deploys (shared dirs)
 set :shared_children,     [log_path, web_path + "/uploads"]
 
@@ -143,9 +140,9 @@ namespace :symfony do
   end
 
   namespace :vendors do
-    desc "Runs the bin/vendors script to update the vendors"
+    desc "Runs the bin/composer script to update the vendors"
     task :update, :roles => :app  do
-      run "cd #{latest_release} && #{php_bin} bin/vendors install --reinstall"
+      run "cd #{latest_release} && #{php_bin} bin/composer install"
     end
   end
 

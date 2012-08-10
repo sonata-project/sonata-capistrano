@@ -23,11 +23,9 @@ end
 
 
 after "deploy:finalize_update" do
-  if update_vendors
-    # share the children first (to get the vendor symlink)
-    # deploy.share_childs
-    # symfony.vendors.update                # 1. Update vendors
-  end
+  # share the children first (to get the vendor symlink)
+  # deploy.share_childs
+  symfony.vendors.update                # 1. Update vendors
 
   symfony.cache.warmup                    # 2. Warmup clean cache
   symfony.assets.install                  # 3. Publish bundle assets

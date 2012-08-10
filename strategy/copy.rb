@@ -59,7 +59,7 @@ module Capistrano
             end
 
             logger.debug "Update external vendors"
-            system(copy_cache + '/bin/vendors install')
+            system(copy_cache + '/bin/composer install')
 
             FileUtils.mkdir_p(destination)
 
@@ -88,7 +88,7 @@ module Capistrano
             system(command)
 
             logger.debug "Update external vendors"
-            system(destination + '/bin/vendors install --reinstall')
+            system(destination + '/bin/composer install')
 
             if copy_exclude.any?
               logger.debug "processing exclusions..."
